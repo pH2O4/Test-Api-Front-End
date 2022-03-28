@@ -29,6 +29,7 @@ const TokenR = '84c18a85c47fea702efff55f579b9f0b537b82e29649d638fbbc9b6841556723
   if(response.data){
     console.log(response.data.id)
     const idUserNumber = response.data.id
+    localStorage.setItem('Token ', TokenR)
     localStorage.setItem('idUser ', idUserNumber)
     window.location.href = 'http://localhost:3000/Home'
   }

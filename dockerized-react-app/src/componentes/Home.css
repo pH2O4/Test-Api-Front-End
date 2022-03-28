@@ -38,3 +38,16 @@ grid-area: UserInformations;
     margin-left: 60px;
     margin-top: 110px;
 }
+
+#ButtonsComents{
+    border-color: black;
+    background-color: aliceblue;
+    font-weight:700;
+    border-radius: 15px;
+    font-size: 9px;
+  }
+
+.RecivingSomePostsFor1°Coment{
+    margin: 25px 100px;
+    text-align: justify;
+}
