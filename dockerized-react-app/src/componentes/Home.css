@@ -1,0 +1,40 @@
+:root{
+    --Menu-wigth: 360px;
+}
+
+
+
+.Home {
+    display: grid;
+    grid-template-columns: 270px 10px 1fr;
+    grid-template-rows: 1fr ;
+    grid-template-areas:
+   "UserInformations divisor Posts";
+   width: 100%;
+   height: 100%;
+   
+}
+
+.ConsultUserInfomation{
+grid-area: UserInformations;
+
+}
+.AllPosts{
+    grid-area: Posts;
+}
+
+.Divisor{
+    grid-area: divisor;
+    background-color: aliceblue;
+}
+
+.TITLE{
+    font-size:xx-large;
+    margin-left: 250px;
+    margin-top: 25px;
+}
+
+.UserButoons{
+    margin-left: 60px;
+    margin-top: 110px;
+}

@@ -27,10 +27,13 @@ const TokenR = '84c18a85c47fea702efff55f579b9f0b537b82e29649d638fbbc9b6841556723
 }}
 ).then((response) => {
   if(response.data){
+    console.log(response.data.id)
+    const idUserNumber = response.data.id
+    localStorage.setItem('idUser ', idUserNumber)
     window.location.href = 'http://localhost:3000/Home'
   }
 }).catch(function(error){
-  window.alert('Look like your informations are already in our database, please check the informations for a new acount!')
+  window.alert('Look like your informations are already in our database or your informations are invalid, please check the informations for a new acount!')
   });
 }
   return (
