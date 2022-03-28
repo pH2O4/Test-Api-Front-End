@@ -15,19 +15,24 @@ const RegisterPage = () => {
 const TokenR = '84c18a85c47fea702efff55f579b9f0b537b82e29649d638fbbc9b6841556723'
 
   const CreatingUser = () =>{
-Axios.post('https://gorest.co.in/public/v2/users', {
-    email: valuesR.EmailR,
+
+   Axios.post('https://gorest.co.in/public/v2/users', {
     name: valuesR.NameR,
-    gender: valuesR.GenR
+    gender: valuesR.GenR,
+    email: valuesR.EmailR,
+    status: 'active',
 },{
   headers: {
     Authorization: 'Bearer ' + TokenR
 }}
 ).then((response) => {
-window.alert(`${response.data}`)
-})
+  if(response.data){
+    window.location.href = 'http://localhost:3000/Home'
   }
-
+}).catch(function(error){
+  window.alert('Look like your informations are already in our database, please check the informations for a new acount!')
+  });
+}
   return (
     <div className="RegisterPage  d-flex justify-content-center">
 
@@ -53,7 +58,7 @@ window.alert(`${response.data}`)
           </select>
         </Form.Group>
 
-        <Button onClick={() => CreatingUser} variant="primary" type="submit">
+        <Button onClick={() => CreatingUser()} variant="primary" >
           Submit
         </Button>
       </Form>
