@@ -1,4 +1,15 @@
 .Users{
-    width: 100vh;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
+}
+
+.AllUsersFromApi{
+    margin: 25px 100px;
+    text-align: justify;
+}
+
+.TitleAllUsers{
+    font-size:xx-large;
+    margin-left: 250px;
+    margin-top: 25px;
 }
