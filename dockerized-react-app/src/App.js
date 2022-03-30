@@ -5,6 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import Home from './componentes/Home'
 import RegisterForm from './componentes/Register'
+import Users from './componentes/Users'
 
 export default props =>
 
@@ -12,6 +13,7 @@ export default props =>
  <Routes>
       <Route path="/" element={<RegisterForm/>} />
       <Route path="/Home" element={<Home/>} />
+      <Route path="/Users" element={<Users/>} />
     </Routes>
     </div>
 

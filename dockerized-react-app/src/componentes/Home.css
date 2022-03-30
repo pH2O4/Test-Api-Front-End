@@ -39,15 +39,33 @@ grid-area: UserInformations;
     margin-top: 110px;
 }
 
-#ButtonsComents{
+.ButtonsComents{
     border-color: black;
     background-color: aliceblue;
     font-weight:700;
     border-radius: 15px;
     font-size: 9px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+  }
+
+  .ComentsSpace{
+      margin-bottom: 25px;
   }
 
 .RecivingSomePostsFor1°Coment{
     margin: 25px 100px;
     text-align: justify;
+}
+
+#CommentsSpace{
+    background-color: rgb(43, 92, 92);
+    border-radius: 9px;
+    font-size: 12px;
+    border-color: aliceblue;
+    border-radius: 15px;
+    margin-bottom: 5px;
+    padding: 10px;
+    overflow: auto;
+    display: none;
 }
