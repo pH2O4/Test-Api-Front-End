@@ -67,5 +67,19 @@ grid-area: UserInformations;
     margin-bottom: 5px;
     padding: 10px;
     overflow: auto;
-    display: none;
+
+}
+
+.ComentPerson{
+    margin: 8px 0px;
+    width: 600px;
+    border-radius: 9px;
+    padding: 10px;
+}
+
+.ButtonForDeleteComent{
+    background: none;
+    border: none;
+    color: #001f3f;
+    
 }
