@@ -13,3 +13,12 @@
     margin-left: 250px;
     margin-top: 25px;
 }
+
+.Userdata{
+   color: black;
+   background-color: aliceblue;
+    margin: 70px 35px;
+    font-size: small;
+    border-radius: 9px;
+    padding: 20px;
+}
