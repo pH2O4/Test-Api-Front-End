@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUserGroup, faSignsPost, faComments, faMessage, faPlusCircle, faDeleteLeft, faTrashCan } from '@fortawesome/free-solid-svg-icons'
 import { Button, Form, Row, Col } from "react-bootstrap";
 import Axios from "axios";
-import axios from "axios";
+
 class Home extends Component {
 
     state = {
