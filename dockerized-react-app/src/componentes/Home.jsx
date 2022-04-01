@@ -116,12 +116,25 @@ class Home extends Component {
                 return
             }
         }
+let { posts, comments } = this.state
 
         const LookingForPosts = () => {
-
+            const responsePosts = Axios.get('https://gorest.co.in/public/v2/posts', {
+                headers: {
+                    Authorization: 'Bearer ' + localStorage.Token
+                }
+            }).then((response) => {
+                const arrayForBeTrated = response.data
+                const ReciveValueForFilterArrayObjct = document.getElementById("inputFoundPostID").value
+                const filtred = arrayForBeTrated.filter(function(obj) { return obj.title == `${ReciveValueForFilterArrayObjct}`; });
+                console.log(filtred)
+                posts = filtred
+                this.componentDidMount()
+            })
+          //  this.setState({ posts: responsePosts.data })
         }
 
-        const { posts, comments } = this.state
+        
         return (
             <div className="Home">
                 <div className="ConsultUserInfomation">
@@ -156,7 +169,7 @@ class Home extends Component {
                                 <Col>
                                     <Form.Group className="mb-3" >
                                         <Form.Label>Found Posts here:</Form.Label>
-                                        <Form.Control className="inputFoundPost" type="text" placeholder="Posts About..." />
+                                        <Form.Control id="inputFoundPostID" className="inputFoundPost" type="text" placeholder="Posts About..." />
                                     </Form.Group>
 
                                 </Col>

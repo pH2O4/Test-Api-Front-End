@@ -3,7 +3,6 @@ import './Home.css'
 import './Users.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUserGroup, faUserCheck } from '@fortawesome/free-solid-svg-icons'
-import { Button } from "react-bootstrap";
 import Axios from "axios";
 
 class Users extends Component {
