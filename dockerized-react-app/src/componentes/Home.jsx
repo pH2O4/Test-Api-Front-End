@@ -53,7 +53,23 @@ class Home extends Component {
         }
 
         const DeletingComent = (comentid) => {
-           
+            let text = "Do you have sure?";
+            const BoleanResult = window.confirm(text)
+            if (BoleanResult == true) {
+                Axios.delete(`https://gorest.co.in/public/v2/comments/${comentid}`, {
+                    headers: {
+                        Authorization: 'Bearer ' + TokenR
+                    }
+                })
+                    .then((reponse) => {
+                        window.alert("Comment has been deleted with sucessfull")
+                        this.componentDidMount()
+                    }
+                    )
+
+            } else {
+                return
+            }
         }
 
         const ShowPostComents = (postId) => {
@@ -91,7 +107,7 @@ class Home extends Component {
                     }
                 })
                     .then((reponse) => {
-                        window.alert("Post apagado com sucesso")
+                        window.alert("Post has been deleted with sucessfull")
                         this.componentDidMount()
                     }
                     )
