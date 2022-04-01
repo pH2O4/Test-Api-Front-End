@@ -23,6 +23,22 @@ grid-area: UserInformations;
     grid-area: Posts;
 }
 
+.ButtonForDeletePost{
+    border: none;
+    color: #001f3f;
+    background-color:aliceblue;
+    border-radius: 9px;
+    margin-bottom: 8px;
+}
+
+.PostsCss{
+    border-style: solid;
+    border-color: black;
+    padding: 30px;
+    margin-bottom: 10px;
+    border-radius: 12px;
+}
+
 .Divisor{
     grid-area: divisor;
     background-color: aliceblue;
@@ -67,7 +83,7 @@ grid-area: UserInformations;
     margin-bottom: 5px;
     padding: 12px;
     overflow: auto;
-
+    display: none;
 }
 
 .ComentPerson{

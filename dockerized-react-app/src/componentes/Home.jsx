@@ -1,7 +1,7 @@
 import { Component, React, useEffect, useState } from "react";
 import './Home.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faUserGroup, faSignsPost, faComments, faMessage, faPlusCircle, faDeleteLeft } from '@fortawesome/free-solid-svg-icons'
+import { faUserGroup, faSignsPost, faComments, faMessage, faPlusCircle, faDeleteLeft, faTrashCan } from '@fortawesome/free-solid-svg-icons'
 import { Button, Form, Row, Col } from "react-bootstrap";
 import Axios from "axios";
 import axios from "axios";
@@ -44,18 +44,16 @@ class Home extends Component {
                     Authorization: 'Bearer ' + TokenR
                 }
             }).then((response) => {
-                 const ClearTitleArea = document.getElementById("NewPostTitle").value = ""
+                const ClearTitleArea = document.getElementById("NewPostTitle").value = ""
                 const ClearBodyArea = document.getElementById("NewPostBody").value = ""
                 window.alert("Post Criado Com sucesso!")
                 this.componentDidMount(posts)
-               
+
             })
         }
 
         const DeletingComent = (comentid) => {
-            // Don't exists no one route for DELETE the coments or din't found and my aplications was building for delete the
-            // comment in the database and show this dinamic in the front-end, i could just give a display: none
-            // but this is easy and nothing interisting for the aplication in a global sense.
+           
         }
 
         const ShowPostComents = (postId) => {
@@ -81,6 +79,26 @@ class Home extends Component {
                 const ClearTextArea = document.getElementById(postId).value = ""
                 this.componentDidMount(posts)
             })
+        }
+
+        const DeletingPost = (postid) => {
+            let text = "Do you have sure?";
+            const BoleanResult = window.confirm(text)
+            if (BoleanResult == true) {
+                Axios.delete(`https://gorest.co.in/public/v2/posts/${postid}`, {
+                    headers: {
+                        Authorization: 'Bearer ' + TokenR
+                    }
+                })
+                    .then((reponse) => {
+                        window.alert("Post apagado com sucesso")
+                        this.componentDidMount()
+                    }
+                    )
+
+            } else {
+                return
+            }
         }
 
         const { posts, comments } = this.state
@@ -115,7 +133,8 @@ class Home extends Component {
                     <div id="RecivingContent" className="RecivingSomePostsFor1°Coment">
                         <div>
                             {posts.map(post => (
-                                <div key={post.id}>
+                                <div className="PostsCss" key={post.id}>
+                                    {post.user_id == localStorage.idUser && <button className="ButtonForDeletePost" onClick={() => DeletingPost(post.id)} > <FontAwesomeIcon icon={faTrashCan} /> </button>}
                                     <p> <b>User id: {post.user_id}</b>  </p>
                                     <p> <b>Título: {post.title}</b>  </p>
                                     <p> {post.body}  </p>
