@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUserGroup, faSignsPost, faComments, faMessage, faPlusCircle, faDeleteLeft } from '@fortawesome/free-solid-svg-icons'
 import { Button, Form, Row, Col } from "react-bootstrap";
 import Axios from "axios";
+import axios from "axios";
 class Home extends Component {
 
     state = {
@@ -32,8 +33,26 @@ class Home extends Component {
     render() {
         const TokenR = '84c18a85c47fea702efff55f579b9f0b537b82e29649d638fbbc9b6841556723'
 
+        const CreatingNewPost = () => {
+            const NewPostTitle = document.getElementById("NewPostTitle").value
+            const NewPostBody = document.getElementById("NewPostBody").value
+            Axios.post(` https://gorest.co.in/public/v2/users/${localStorage.idUser}/posts`, {
+                title: NewPostTitle,
+                body: NewPostBody,
+            }, {
+                headers: {
+                    Authorization: 'Bearer ' + TokenR
+                }
+            }).then((response) => {
+                window.alert("Post Criado Com sucesso!")
+                this.componentDidMount(posts)
+            })
+        }
+
         const DeletingComent = (comentid) => {
-            console.log(comentid)
+            // Don't exists no one route for DELETE the coments or din't found and my aplications was building for delete the
+            // comment in the database and show this dinamic in the front-end, i could just give a display: none
+            // but this is easy and nothing interisting for the aplication in a global sense.
         }
 
         const ShowPostComents = (postId) => {
@@ -50,16 +69,17 @@ class Home extends Component {
             Axios.post(`https://gorest.co.in/public/v2/posts/${postId}/comments`, {
                 name: localStorage.NameUser,
                 email: localStorage.EmailUser,
-                body: inputValue},{
-                    headers:{
-                        Authorization: 'Bearer ' + TokenR
+                body: inputValue
+            }, {
+                headers: {
+                    Authorization: 'Bearer ' + TokenR
                 }
             }).then((response) => {
                 const ClearTextArea = document.getElementById(postId).value = ""
-                const i = document.getElementsByClassName(postId)
-                window.location.reload()
+                this.componentDidMount(posts)
             })
         }
+
         const { posts, comments } = this.state
         return (
             <div className="Home">
@@ -73,6 +93,21 @@ class Home extends Component {
                 <div className="AllPosts">
                     <div className="TITLE">
                         <FontAwesomeIcon icon={faSignsPost} /> All Posts
+                    </div>
+                    <div className="AddNewPost">
+                        <Form>
+                            <Form.Group className="mb-3" >
+                                <Form.Label>Insert The Post Title</Form.Label>
+                                <Form.Control id="NewPostTitle" className="TitlePost" type="text" placeholder="Ex: Star Wars" />
+                            </Form.Group>
+                            <Form.Group className="mb-3">
+                                <Form.Label>Example textarea</Form.Label>
+                                <Form.Control id="NewPostBody" className="BodyPost" as="textarea" rows={3} />
+                            </Form.Group>
+                            <Button onClick={() => CreatingNewPost()} variant="primary" >
+                                Submit
+                            </Button>
+                        </Form>
                     </div>
                     <div id="RecivingContent" className="RecivingSomePostsFor1°Coment">
                         <div>
@@ -89,7 +124,7 @@ class Home extends Component {
                                         {comments.map(coment =>
                                             post.id == coment.post_id &&
                                             <div key={coment.id}>
-                                                <p> <b>{coment.name}:</b>  {coment.body} {coment.email == localStorage.EmailUser && <button className="ButtonForDeleteComent" onClick={() => DeletingComent(coment.id)} > <FontAwesomeIcon icon={faDeleteLeft} /> </button> } </p> 
+                                                <p> <b>{coment.name}:</b>  {coment.body} {coment.email == localStorage.EmailUser && <button className="ButtonForDeleteComent" onClick={() => DeletingComent(coment.id)} > <FontAwesomeIcon icon={faDeleteLeft} /> </button>} </p>
 
                                             </div>
 

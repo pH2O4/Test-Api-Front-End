@@ -59,19 +59,19 @@ grid-area: UserInformations;
 }
 
 #CommentsSpace{
-    background-color: rgb(43, 92, 92);
+    background-color: rgb(42, 95, 241);
     border-radius: 9px;
     font-size: 12px;
     border-color: aliceblue;
     border-radius: 15px;
     margin-bottom: 5px;
-    padding: 10px;
+    padding: 12px;
     overflow: auto;
 
 }
 
 .ComentPerson{
-    margin: 8px 0px;
+    margin-top: 8px;
     width: 600px;
     border-radius: 9px;
     padding: 10px;
@@ -82,4 +82,16 @@ grid-area: UserInformations;
     border: none;
     color: #001f3f;
     
+}
+
+.AddNewPost{
+    display: flex;
+    margin: 25px 100px;
+}
+
+.TitlePost{
+    width: 350px;
+}
+.BodyPost{
+   width: 500px;
 }
