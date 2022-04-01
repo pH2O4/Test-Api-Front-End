@@ -44,8 +44,11 @@ class Home extends Component {
                     Authorization: 'Bearer ' + TokenR
                 }
             }).then((response) => {
+                 const ClearTitleArea = document.getElementById("NewPostTitle").value = ""
+                const ClearBodyArea = document.getElementById("NewPostBody").value = ""
                 window.alert("Post Criado Com sucesso!")
                 this.componentDidMount(posts)
+               
             })
         }
 
