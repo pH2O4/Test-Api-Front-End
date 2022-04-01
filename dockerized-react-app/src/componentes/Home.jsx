@@ -46,7 +46,7 @@ class Home extends Component {
             }).then((response) => {
                 const ClearTitleArea = document.getElementById("NewPostTitle").value = ""
                 const ClearBodyArea = document.getElementById("NewPostBody").value = ""
-                window.alert("Post Criado Com sucesso!")
+                window.alert("Post Has been created with sucessfull!")
                 this.componentDidMount(posts)
 
             })
