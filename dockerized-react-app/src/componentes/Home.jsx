@@ -1,7 +1,7 @@
 import { Component, React, useEffect, useState } from "react";
 import './Home.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faUserGroup, faSignsPost, faComments, faMessage, faPlusCircle, faDeleteLeft, faTrashCan } from '@fortawesome/free-solid-svg-icons'
+import { faUserGroup, faSignsPost, faComments, faMessage, faPlusCircle, faDeleteLeft, faTrashCan, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
 import { Button, Form, Row, Col } from "react-bootstrap";
 import Axios from "axios";
 
@@ -117,6 +117,10 @@ class Home extends Component {
             }
         }
 
+        const LookingForPosts = () => {
+
+        }
+
         const { posts, comments } = this.state
         return (
             <div className="Home">
@@ -134,17 +138,35 @@ class Home extends Component {
                     <div className="AddNewPost">
                         <Form>
                             <Form.Group className="mb-3" >
-                                <Form.Label>Insert The Post Title</Form.Label>
+                                <Form.Label>Insert Create A New Post</Form.Label>
                                 <Form.Control id="NewPostTitle" className="TitlePost" type="text" placeholder="Ex: Star Wars" />
                             </Form.Group>
                             <Form.Group className="mb-3">
-                                <Form.Label>Example textarea</Form.Label>
+                                <Form.Label>Type Your Post</Form.Label>
                                 <Form.Control id="NewPostBody" className="BodyPost" as="textarea" rows={3} />
                             </Form.Group>
                             <Button onClick={() => CreatingNewPost()} variant="primary" >
                                 Submit
                             </Button>
                         </Form>
+                    </div>
+                    <div className="SerachingPost">
+                        <Form>
+                            <Row>
+                                <Col>
+                                    <Form.Group className="mb-3" >
+                                        <Form.Label>Found Posts here:</Form.Label>
+                                        <Form.Control className="inputFoundPost" type="text" placeholder="Posts About..." />
+                                    </Form.Group>
+
+                                </Col>
+                            </Row>
+                            <Button className="ButtonForFoundPost" onClick={() => LookingForPosts()} variant="primary" >
+                                <FontAwesomeIcon icon={faMagnifyingGlass} />
+                            </Button>
+                        </Form>
+
+
                     </div>
                     <div id="RecivingContent" className="RecivingSomePostsFor1°Coment">
                         <div>

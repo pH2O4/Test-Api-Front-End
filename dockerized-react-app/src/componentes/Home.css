@@ -19,8 +19,19 @@
 grid-area: UserInformations;
 
 }
+
+.inputFoundPost{
+    width: 350px;
+}
+
 .AllPosts{
     grid-area: Posts;
+}
+
+.SerachingPost{
+   display: inline-flex;
+   flex-direction: row;
+    margin: 20px 100px;
 }
 
 .ButtonForDeletePost{
