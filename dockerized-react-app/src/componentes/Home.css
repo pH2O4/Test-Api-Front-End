@@ -44,7 +44,7 @@ grid-area: UserInformations;
 
 .PostsCss{
     border-style: solid;
-    border-color: black;
+    border-color: rgb(42, 95, 241);
     padding: 30px;
     margin-bottom: 10px;
     border-radius: 12px;

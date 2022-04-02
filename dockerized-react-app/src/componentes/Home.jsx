@@ -116,7 +116,7 @@ class Home extends Component {
                 return
             }
         }
-let { posts, comments } = this.state
+        let { posts, comments } = this.state
 
         const LookingForPosts = () => {
             const responsePosts = Axios.get('https://gorest.co.in/public/v2/posts', {
@@ -126,15 +126,10 @@ let { posts, comments } = this.state
             }).then((response) => {
                 const arrayForBeTrated = response.data
                 const ReciveValueForFilterArrayObjct = document.getElementById("inputFoundPostID").value
-                const filtred = arrayForBeTrated.filter(function(obj) { return obj.title == `${ReciveValueForFilterArrayObjct}`; });
-                console.log(filtred)
-                posts = filtred
-                this.componentDidMount()
+ 
             })
-          //  this.setState({ posts: responsePosts.data })
         }
 
-        
         return (
             <div className="Home">
                 <div className="ConsultUserInfomation">
@@ -184,6 +179,7 @@ let { posts, comments } = this.state
                     <div id="RecivingContent" className="RecivingSomePostsFor1°Coment">
                         <div>
                             {posts.map(post => (
+
                                 <div className="PostsCss" key={post.id}>
                                     {post.user_id == localStorage.idUser && <button className="ButtonForDeletePost" onClick={() => DeletingPost(post.id)} > <FontAwesomeIcon icon={faTrashCan} /> </button>}
                                     <p> <b>User id: {post.user_id}</b>  </p>
